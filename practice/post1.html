@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>POST sample1</title>
+</head>
+<body>
+	<form action="post2.php" method="POST">
+		名前を入力：<input type="text" name="name"><br>
+		性別を入力：
+		<input type="radio" name="sex" value="male">男
+		<input type="radio" name="sex" value="female">女<br>
+		学習済プログラミング言語を入力：
+		<input type="checkbox" name="lang[]" value="c">C
+		<input type="checkbox" name="lang[]" value="java">Java
+		<input type="checkbox" name="lang[]" value="php">PHP<br>
+		<textarea name="comment" cols="40" rows="4"></textarea><br>
+		<input type="hidden" name="univ" value="keio">
+		<input type="submit" value="送信">
+	</form>
+</body>
+</html>
