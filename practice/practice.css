@@ -1,0 +1,12 @@
+h1 {
+	padding: 0.5em;
+	border-top: 3px double red;
+	border-bottom: 3px double red;
+	font-weight: bold;
+}
+
+h2 {
+	border-left: 7px solid blue;
+	border-bottom: 1px dashed green;
+	font-weight: bold;
+}
