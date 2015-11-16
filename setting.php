@@ -12,10 +12,10 @@ class mydb {
 		$this->db = pg_connect("host=".$this->dbhost." dbname=".$this->dbname." user=".$this->dbuser);
 	}
 	
-	public function query($sql, array $params = array())
+	public function query($sql, array $params = array(), $q = "")
 	{
-		$stmt = pg_prepare($this->db, "query", $sql);
-		$result = pg_execute($this->db, "query", $params);
+		$stmt = pg_prepare($this->db, $q, $sql);
+		$result = pg_execute($this->db, $q, $params);
 		
 		return $result;
 	}
