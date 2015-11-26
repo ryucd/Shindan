@@ -1,4 +1,5 @@
 	
+								</div>
 							</div>
 						</div>
 					</div>
@@ -93,7 +94,7 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/jquery.leanModal.min.js"></script>
-			<script src="assets/js/toppage.js"></script>
+			<script src="assets/js/ajax.js"></script>
 
 	</body>
 </html>
