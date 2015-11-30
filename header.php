@@ -74,7 +74,7 @@
 									<li<? print $ins[2]; ?>><a href="posting.php">診断作成</a></li>
 									<li<? print $ins[3]; ?>><a href="log.php">診断履歴</a></li>
 									<li<? print $ins[4]; ?>><a href="search.php">診断検索</a></li>
-									<li<? print $ins[5]; ?>><a href="#login_form" rel="leanModal">ログアウト</a></li>
+									<li<? print $ins[5]; ?>><a href="logout.php" id="logout">ログアウト</a></li>
 								</ul>
 							</nav>
 
@@ -104,7 +104,7 @@
 											<h3>アカウント設定</h3>
 											<ul class="style2">
 												<li><a href="password.php">登録情報変更</a></li>
-												<li><a href="logout.php">ログアウト</a></li>
+												<li><a href="logout.php" id="logout">ログアウト</a></li>
 											</ul>
 										</section>
 
