@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if(isset($_SESSION['id'])){
+		header("Location: top.php");
+	}
+?>
 <!DOCTYPE HTML>
 <!--
 	Verti by HTML5 UP
@@ -29,24 +35,8 @@
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li class="current"><a href="index.html">Top Page</a></li>
-									<li>
-										<a href="#">診断とは？</a>
-										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Lorem ipsum dolor</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
-										</ul>
-									</li>
+									<li class="current"><a href="index.php">Top Page</a></li>
+									<li><a href="#">診断とは？</a></li>
 									<li><a href="left-sidebar.html">このサイトについて</a></li>
 									<li><a href="#register_form" rel="leanModal">会員登録</a></li>
 									<li><a href="#login_form" rel="leanModal">ログイン</a></li>
@@ -252,17 +242,17 @@
 
 		<!-- login form -->
 		<div id="login_form">
-			<form>
-			ID:<input type="text"><br>
-			パスワード：<input type="password"><br>
+			<form method="POST" action="./login_check.php">
+			ID:<input type="text" name="login_name"><br>
+			パスワード：<input type="password" name="pwd"><br>
 			<input type="submit" value="ログイン">
 			</form>
 		</div>
 		
 		<div id="register_form">
-			<form>
-			ID:<input type="text"><br>
-			パスワード：<input type="password"><br>
+			<form method="POST" action="./regist.php">
+			ID:<input type="text" name="login_name"><br>
+			パスワード：<input type="password" name="pwd"><br>
 			<input type="submit" value="登録">
 			</form>
 		</div>

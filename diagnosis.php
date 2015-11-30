@@ -1,11 +1,17 @@
 <?
 session_start();
 
+$_GET['pagename'] = 'list';
 include "setting.php";
 
-if(!isset($_GET['id']) || !is_numeric($_GET['id'])){
+if(!isset($_GET['id'])){
+	gotoindex();
+}
+if(!is_numeric($_GET['id'])){
 	exit(0);
 }
+
+include "header.php";
 
 $id = $_GET['id'];
 $q_result = get_question($id);
@@ -15,7 +21,9 @@ if($q_result == false || $c_result == false){
 	exit(0);
 } else {
 	$question = pg_fetch_assoc($q_result, 0);
+	$dt = date("Y-m-d H:i:s", strtotime($question['date']));
 	print "診断：{$question['content']}<br>";
+	print "作成日時：{$dt}<br>";
 	print "質問：{$question['question']}<br>";
 	
 	$num = pg_num_rows($c_result);
@@ -25,6 +33,7 @@ if($q_result == false || $c_result == false){
 	}
 }
 
+include "footer.php";
 
 
 

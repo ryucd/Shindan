@@ -1,23 +1,20 @@
 <?php
 session_start();
-include "setting.php"
-?>
+include "setting.php";
 
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<title>パスワード更新</title>
-</head><body>
+if(!isset($_SESSION['id'])){
+	gotoindex();
+}
+if(!post_check()){
+	exit(0);
+}
 
-<?php
-if(post_check() && isset($_SESSION['id'])){
+include "header.php";
+
 	$pwd = $_POST['pwd'];
 	$newpwd = $_POST['newpwd'];
 	$login_name = $_SESSION['login_name'];
-} else {
-	print "不正なアクセスです";
-	exit(0);
-}
+
 
 $db = new mydb();
 $query = "select * from member where login_name=$1";
@@ -32,6 +29,8 @@ if (password_verify($pwd, $row['pwd'])) { // パスワードが正しい
 } else {
 	print "現在のパスワードが間違っています。";
 }
+
+include "footer.php";
 
 function post_check()
 {

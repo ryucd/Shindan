@@ -29,4 +29,8 @@ class mydb {
 	}
 }
 
+function gotoindex(){
+	header("Location: index.php");
+}
+
 ?>

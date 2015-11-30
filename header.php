@@ -1,3 +1,12 @@
+<?
+	if(!$_SESSION['id']){
+		session_start();
+	}
+	if(!isset($_SESSION['id'])){
+		include "setting.php";
+		gotoindex();
+	}
+	?>
 <!DOCTYPE HTML>
 <!--
 	Verti by HTML5 UP
@@ -22,34 +31,50 @@
 
 						<!-- Logo -->
 							<div id="logo">
-								<h1><a href="index.html">診断サイト</a></h1>
-								<span>無料でいろいろな診断！</span>
+								<h1><a href="top.php">診断サイト</a></h1>
+								<!--<span>無料でいろいろな診断！</span>-->
 							</div>
 
 						<!-- Nav -->
+						<?php
+							$page = 0;
+							$ins = array('', '', '', '', '', '', '');
+							$current =" class=\"current\"";
+							if(isset($_GET['pagename'])){
+								switch($_GET['pagename']){
+									case "top":
+										$page = 0;
+										break;
+									case "list":
+										$page = 1;
+										break;
+									case "posting":
+										$page = 2;
+										break;
+									case "log":
+										$page = 3;
+										break;
+									case "search":
+										$page = 4;
+										break;
+									case "logout":
+										$page = 5;
+										break;
+									default:
+										$page = 6;
+										break;
+								}
+								$ins[$page] = $current;
+							}
+							?>
 							<nav id="nav">
 								<ul>
-									<li class="current"><a href="index.html">Top Page</a></li>
-									<li>
-										<a href="#">診断とは？</a>
-										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Lorem ipsum dolor</a></li>
-													<li><a href="#">Phasellus consequat</a></li>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
-										</ul>
-									</li>
-									<li><a href="left-sidebar.html">このサイトについて</a></li>
-									<li><a href="#register_form" rel="leanModal">会員登録</a></li>
-									<li><a href="#login_form" rel="leanModal">ログイン</a></li>
+									<li<? print $ins[0]; ?>><a href="top.php">Top Page</a></li>
+									<li<? print $ins[1]; ?>><a href="lists.php">診断一覧</a></li>
+									<li<? print $ins[2]; ?>><a href="posting.php">診断作成</a></li>
+									<li<? print $ins[3]; ?>><a href="log.php">診断履歴</a></li>
+									<li<? print $ins[4]; ?>><a href="search.php">診断検索</a></li>
+									<li<? print $ins[5]; ?>><a href="#login_form" rel="leanModal">ログアウト</a></li>
 								</ul>
 							</nav>
 
@@ -65,25 +90,21 @@
 
 									<!-- Sidebar -->
 										<section>
-											<h3>Subheading</h3>
-											<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-											Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-											Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
-											consequat etiam.</p>
-											<footer>
-												<a href="#" class="button icon fa-info-circle">Find out more</a>
-											</footer>
-										</section>
-
-										<section>
-											<h3>Subheading</h3>
+											<h3>メニュー</h3>
 											<ul class="style2">
-												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
-												<li><a href="#">Ornare in hendrerit in lectus</a></li>
-												<li><a href="#">Semper mod quis eget mi dolore</a></li>
-												<li><a href="#">Quam turpis feugiat sit dolor</a></li>
-												<li><a href="#">Amet ornare in hendrerit in lectus</a></li>
-												<li><a href="#">Semper mod quisturpis nisi</a></li>
+												<li><a href="lists.php">診断一覧</a></li>
+												<li><a href="log.php">診断履歴</a></li>
+												<li><a href="posting.php">診断作成</a></li>
+												<li><a href="search.php">診断検索</a></li>
+											</ul>
+										</section>
+										
+										
+										<section>
+											<h3>アカウント設定</h3>
+											<ul class="style2">
+												<li><a href="password.php">登録情報変更</a></li>
+												<li><a href="logout.php">ログアウト</a></li>
 											</ul>
 										</section>
 

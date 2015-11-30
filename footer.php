@@ -95,6 +95,13 @@
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/jquery.leanModal.min.js"></script>
 			<script src="assets/js/ajax.js"></script>
+			<script src="assets/js/functions.js"></script>
+			<?php
+			if(isset($_GET['pagename'])){
+				if($_GET['pagename'] == 'list'){
+					print "<script src='assets/js/lists.js'></script>";
+				}
+			} ?>
 
 	</body>
 </html>

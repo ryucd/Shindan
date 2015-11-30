@@ -2,9 +2,14 @@
 session_start();
 include "setting.php";
 
-if(!isset($_GET['id']) || !isset($_GET['ans']) || !isset($_SESSION['id'])){
+if(!isset($_SESSION['id'])){
+	gotoindex();
+}
+if(!isset($_GET['id']) || !isset($_GET['ans'])){
 	exit(0);
 }
+
+include "header.php";
 
 $q_id = $_GET['id'];
 $ans = $_GET['ans'];
@@ -15,6 +20,8 @@ if(update_answer($m_id, $q_id, $ans) != false){
 	$q = pg_fetch_assoc($answer, 0);
 	print "結果は{$q['answer']}です。";
 }
+
+include "footer.php";
 
 function get_answer($id){
 	$db = new mydb();

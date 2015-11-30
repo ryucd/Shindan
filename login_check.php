@@ -7,8 +7,7 @@ if(post_check()){
 	$login_name = $_POST['login_name'];
 	$pwd = $_POST['pwd'];
 } else {
-	printf("ログインフォームからログインして下さい");
-	exit(0);
+	gotoindex();
 }
 
 $db = new mydb();
@@ -18,16 +17,19 @@ $result = $db->query($query, array($login_name));
 if(pg_num_rows($result) == 1){
 	$row = pg_fetch_assoc($result, 0);
 	if(password_verify($pwd, $row['pwd'])){
-		print $row['login_name']."さん<br>ログイン成功<br>";
-		print "<a href=\"index.php\">Topページ</a>へ";
-		
 		$_SESSION['login_name'] = $row['login_name'];
 		$_SESSION['id'] = $row['id'];
+		login_success();
 	} else {
 		login_failed();
 	}
 } else {
 	login_failed();
+}
+
+function login_success()
+{
+	header("Location: top.php");
 }
 
 function post_check()

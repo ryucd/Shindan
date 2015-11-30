@@ -1,5 +1,9 @@
 <?
 session_start();
+if(!isset($_SESSION['id'])){
+	include "setting.php";
+	gotoindex();
+}
 session_destroy();
 ?>
 
