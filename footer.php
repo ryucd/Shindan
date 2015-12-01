@@ -56,7 +56,7 @@
 							<div class="3u 6u$(medium) 12u$(small)">
 
 								<!-- Contact -->
-									<section class="widget contact last">
+									<!-- <section class="widget contact last">
 										<h3>Contact Us</h3>
 										<ul>
 											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
@@ -68,7 +68,7 @@
 										<p>1234 Fictional Road<br />
 										Nashville, TN 00000<br />
 										(800) 555-0000</p>
-									</section>
+									</section>-->
 
 							</div>
 						</div>
