@@ -6,3 +6,7 @@ I made this for Web Application Experiment of my university.
 * PHP
 * PostgreSQL
 * jquery
+
+# Templates
+* html5up http://html5up.net/
+* Chart.js http://www.chartjs.org/
