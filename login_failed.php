@@ -1,2 +1,2 @@
 ログインに失敗しました。<br>
-<a href="login.php">ログインページ</a>へ
+<a href="index.php">トップページ</a>へ

@@ -23,8 +23,8 @@ for($i = 0; $i<$num; $i++){
 	$dt = date("Y-m-d", strtotime($row['date']));
 	print "<tr>";
 	print "<td><a href='diagnosis.php?id=".$row['id']."'>".htmlspecialchars($row['content'])."</a></td>";
-	print "<td>{$row['login_name']}</td>";
-	print "<td>{$dt}</td>";
+	print "<td class='user'>{$row['login_name']}</td>";
+	print "<td class='date'>{$dt}</td>";
 	print "</tr>\n";
 }
 

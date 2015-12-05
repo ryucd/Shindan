@@ -2,9 +2,11 @@
 session_start();
 include "setting.php";
 
-if(!isset($_SESSION['id'])){
+if(!isset($_SESSION['id']) || !isset($_SESSION['ipaddress'])){
 	gotoindex();
 }
+
+check_login();
 
 $_GET['pagename'] = 'log';
 include "header.php";
@@ -24,7 +26,8 @@ function print_list($result)
 		print "<tr><th>診断名</th><th>回答</th><th>結果</th></tr>\n";
 		for($i = 0; $i < $num; $i++){
 				$row = pg_fetch_assoc($result, $i);
-				print "<tr><td>{$row['content']}</td><td>{$row['choice']}</td><td>{$row['answer']}</td></tr>\n";
+				$ans = getAnswer($row['answer']);
+				print "<tr><td>{$row['content']}</td><td>{$row['choice']}</td><td>{$ans}</td></tr>\n";
 		}
 		print "</table>\n";
 	}
@@ -32,7 +35,7 @@ function print_list($result)
 
 function get_my_answers($id){
 	$db = new mydb();
-	$query = "select q.id as q_id, q.content, c.choice, c.answer from crystal q, choices c, answer a where a.q_id = q.id and a.m_id = $1";
+	$query = "select q.id as q_id, q.content, c.choice, c.answer from crystal q, answer a, choices c where a.q_id = q.id and a.answer = c.id and a.m_id = $1";
 	$result = $db->query($query, array($id), "getans");
 	return $result;
 }

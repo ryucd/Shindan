@@ -3,7 +3,8 @@ session_start();
 include "setting.php";
 
 if(!check_post()){
-	gotoindex();
+	print "フォームは全て記入してください。";
+	exit;
 }
 
 $check = check_inputs();
@@ -14,12 +15,13 @@ if($check != ''){
 
 $login_name = $_POST["login_name"];
 $pwd = $_POST["pwd"];
+$sex = getSex($_POST["sex"]);
 $hashpwd = password_hash($pwd, PASSWORD_DEFAULT);
 $db = new mydb();
 
 if(check_exist_user($db, $login_name) == true){
-	$query = "INSERT INTO member (login_name,pwd) VALUES($1, $2)";
-	$result = $db->query($query, array($login_name, $hashpwd));
+	$query = "INSERT INTO member (login_name,pwd,sex) VALUES($1, $2, $3)";
+	$result = $db->query($query, array($login_name, $hashpwd, $sex));
 	if($result == false){
 		print "登録に失敗しました。";
 	} else {
@@ -33,12 +35,13 @@ if(check_exist_user($db, $login_name) == true){
 }
 
 function check_post(){
-	return isset($_POST['login_name']) && isset($_POST['pwd']);
+	return isset($_POST['login_name']) && isset($_POST['pwd']) && isset($_POST['sex']);
 }
 
 function check_inputs(){
 	$name = $_POST['login_name'];
 	$pass = $_POST['pwd'];
+	$sx = $_POST['sex'];
 	$err = "";
 	
 	if($name == ''){
@@ -65,6 +68,10 @@ function check_inputs(){
 			$err .= "パスワードは6文字以上にしてください。<br>";
 		}
 	}
+
+	if($sx != '1' && $sx != '2'){
+		$err .= "性別の値が不正です。<br>";
+	}
 	
 	return $err;
 }
@@ -73,6 +80,7 @@ function regist_success($login_name, $id)
 {
 	$_SESSION['login_name'] = $login_name;
 	$_SESSION['id'] = $id;
+	$_SESSION['ipaddress'] = $_SERVER['REMOTE_ADDR'];
 	header("Location: top.php");
 }
 

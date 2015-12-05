@@ -12,7 +12,7 @@
 -->
 <html>
 	<head>
-		<title>診断サイト</title>
+		<title>本当の性別診断サイト（情報工学実験）</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -28,16 +28,16 @@
 
 						<!-- Logo -->
 							<div id="logo">
-								<h1><a href="index.html">診断サイト</a></h1>
-								<span>無料でいろいろな診断！</span>
+								<h1><a href="index.html">本当の性別診断サイト</a></h1>
+								<span>無料で性別診断しよう</span>
 							</div>
 
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li class="current"><a href="index.php">Top Page</a></li>
+								<!--	<li class="current"><a href="index.php">Top Page</a></li>
 									<li><a href="#">診断とは？</a></li>
-									<li><a href="left-sidebar.html">このサイトについて</a></li>
+									<li><a href="left-sidebar.html">このサイトについて</a></li>-->
 									<li><a href="#register_form" rel="leanModal">会員登録</a></li>
 									<li><a href="#login_form" rel="leanModal">ログイン</a></li>
 								</ul>
@@ -51,8 +51,8 @@
 					<div id="banner" class="box container">
 						<div class="row">
 							<div class="7u 12u(medium)">
-								<h2>診断しませんか？</h2>
-								<p>無料で診断でき、新しく作ることもできます。</p>
+								<h2>性別診断しませんか？</h2>
+								<p>このサイトは慶應義塾⼤学理⼯学部の情報⼯学実験のために作成したものです。実際には利用できません。</p>
 							</div>
 							<div class="5u 12u(medium)">
 								<ul>
@@ -105,10 +105,10 @@
 										<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
 										<div class="inner">
 											<header>
-												<h2>その他にも…</h2>
+												<h2>自分の性別を確認しよう</h2>
 												<!-- <p>Here's another intriguing subtitle</p> -->
 											</header>
-											<p>診断マスターを目指してがんばりましょう。</p>
+											<p>毎日診断してがんばりましょう。</p>
 										</div>
 									</section>
 
@@ -116,7 +116,11 @@
 						</div>
 					</div>
 				</div>
-
+<div id="main-wrapper">
+<div class="container">
+<img src="images/sample.png">
+</div>
+</div>
 			<!-- Main -->
 				<!-- <div id="main-wrapper">
 					<div class="container">
@@ -210,7 +214,7 @@
 							<div class="3u 6u$(medium) 12u$(small)">
 
 								<!-- Contact -->
-									<section class="widget contact last">
+								<!--	<section class="widget contact last">
 										<h3>Contact Us</h3>
 										<ul>
 											<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
@@ -223,7 +227,7 @@
 										Nashville, TN 00000<br />
 										(800) 555-0000</p>
 									</section>
-
+-->
 							</div>
 						</div>
 						<div class="row">
@@ -242,6 +246,7 @@
 
 		<!-- login form -->
 		<div id="login_form">
+			<h2>ログイン</h2>
 			<form method="POST" action="./login_check.php">
 			ID:<input type="text" name="login_name"><br>
 			パスワード：<input type="password" name="pwd"><br>
@@ -250,9 +255,11 @@
 		</div>
 		
 		<div id="register_form">
+			<h2>新規登録</h2>
 			<form method="POST" action="./regist.php">
 			ID:<input type="text" name="login_name"><br>
 			パスワード：<input type="password" name="pwd"><br>
+			性別：<input type="radio" name="sex" value="1">男&nbsp;&nbsp;<input type="radio" name="sex" value="2">女<br><br>
 			<input type="submit" value="登録">
 			</form>
 		</div>

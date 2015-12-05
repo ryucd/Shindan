@@ -94,7 +94,7 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 			<script src="assets/js/jquery.leanModal.min.js"></script>
-			<script src="assets/js/ajax.js"></script>
+			<script src="assets/js/htmlspecialchars.js"></script>
 			<?php
 			if(isset($_GET['pagename'])){
 				if($_GET['pagename'] == 'list'){
@@ -102,6 +102,9 @@
 				}
 				if($_GET['pagename'] == 'posting'){
 					print "<script src='assets/js/functions.js'></script>";
+				}
+				if($_GET['pagename'] == 'search'){
+					print "<script src='assets/js/ajax.js'></script>";
 				}
 			} ?>
 

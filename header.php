@@ -1,5 +1,5 @@
 <?
-	if(!$_SESSION['id']){
+	if(!isset($_SESSION['id'])){
 		session_start();
 	}
 	if(!isset($_SESSION['id'])){
@@ -15,11 +15,12 @@
 -->
 <html>
 	<head>
-		<title>診断サイト</title>
+		<title>本当の性別診断サイト（情報工学実験）</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/my.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body class="homepage">
@@ -27,11 +28,12 @@
 
 			<!-- Header -->
 				<div id="header-wrapper">
+				<img src="images/sample.png">
 					<header id="header" class="container">
 
 						<!-- Logo -->
 							<div id="logo">
-								<h1><a href="top.php">診断サイト</a></h1>
+								<h1><a href="top.php">本当の性別診断</a></h1>
 								<!--<span>無料でいろいろな診断！</span>-->
 							</div>
 

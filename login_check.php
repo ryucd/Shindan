@@ -19,6 +19,7 @@ if(pg_num_rows($result) == 1){
 	if(password_verify($pwd, $row['pwd'])){
 		$_SESSION['login_name'] = $row['login_name'];
 		$_SESSION['id'] = $row['id'];
+		$_SESSION['ipaddress'] = $_SERVER['REMOTE_ADDR'];
 		login_success();
 	} else {
 		login_failed();

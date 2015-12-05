@@ -4,9 +4,10 @@ session_start();
 $_GET['pagename'] = 'list';
 include "setting.php";
 
-if(!isset($_GET['id'])){
+if(!isset($_GET['id']) || !isset($_SESSION['id']) || !isset($_SESSION['ipaddress'])){
 	gotoindex();
 }
+check_login();
 if(!is_numeric($_GET['id'])){
 	exit(0);
 }
@@ -23,13 +24,13 @@ if($q_result == false || $c_result == false){
 	$question = pg_fetch_assoc($q_result, 0);
 	$dt = date("Y-m-d H:i:s", strtotime($question['date']));
 	print "診断：{$question['content']}<br>";
-	print "作成日時：{$dt}<br>";
-	print "質問：{$question['question']}<br>";
+	print "作成日時：{$dt}<br><br>";
+	print "質問：{$question['question']}<br><br>";
 	
 	$num = pg_num_rows($c_result);
 	for($i = 0; $i < $num; $i++){
 		$choice = pg_fetch_assoc($c_result, $i);
-		print "<a href='answer.php?id={$id}&ans={$choice['id']}'>".$choice['choice']."</a><br>";
+		print "<button onclick=\"location.href='answer.php?id={$id}&ans={$choice['id']}'\">".$choice['choice']."</button><br><br>";
 	}
 }
 

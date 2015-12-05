@@ -3,9 +3,11 @@ session_start();
 
 include "setting.php";
 
-if(!isset($_SESSION['id'])){
+if(!isset($_SESSION['id']) || !isset($_SESSION['ipaddress'])){
 	gotoindex();
 }
+
+check_login();
 
 if(!post_check()){
 	exit(0);
@@ -62,8 +64,8 @@ function set_cookie(){
 function reset_cookie(){
 	setcookie("posting_content", "", time()-60*10);
 	setcookie("posting_question", "", time()-60*10);
-	setcookie("posting_choice", "", time()-60*10);
-	setcookie("posting_answer", "", time()-60*10);
+	setcookie("posting_choice[]", "", time()-60*10);
+	setcookie("posting_answer[]", "", time()-60*10);
 }
 
 function check_submit($content, $question, $choice, $answer){
@@ -80,14 +82,27 @@ function check_submit($content, $question, $choice, $answer){
 	
 	for($i = 0; $i<count($choice); $i++){
 		if(empty($choice[$i]) || empty($answer[$i])){
-			print "全ての項目を入力してください。<br>";
-			return false;
+			if($choice[$i] == 0){
+				print "全ての項目を入力してください。<br>";
+				return false;
+			}
 		}
 	}
 	
 	if(count($choice) > 10){
 		print "選択肢は10個までにしてください。<br>";
 		return false;
+	}
+
+	for($i = 0; $i < count($answer); $i++){
+		if(is_numeric($answer[$i]) == false){
+			print "選択肢の答えには-100〜100の数字を入れてください。<br>";
+			return false;
+		}
+		if(intval($answer[$i]) < -100 || intval($answer[$i]) > 100){
+			print "選択肢の答えは-100〜100の値を入れてください。<br>";
+			return false;
+		}
 	}
 	
 	return true;

@@ -1,0 +1,16 @@
+table, td, th {
+	border: 1px solid gray;
+	padding-left: 15px;
+}
+
+table .date {
+	width: 150px;
+	padding: 0;
+	text-align: center;
+}
+
+table .user {
+	width: 150px;
+	padding: 0;
+	text-align: center;
+}
